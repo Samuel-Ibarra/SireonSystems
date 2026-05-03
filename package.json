@@ -1,0 +1,58 @@
+{
+  "name": "sireon-systems-landing-page",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "node ./node_modules/next/dist/bin/next dev",
+    "build": "node ./node_modules/next/dist/bin/next build",
+    "start": "node ./node_modules/next/dist/bin/next start",
+    "lint": "node ./node_modules/eslint/bin/eslint.js . --max-warnings=0",
+    "test": "node ./node_modules/vitest/vitest.mjs run",
+    "test:watch": "node ./node_modules/vitest/vitest.mjs",
+    "remotion:prepare": "node -e \"require('fs').mkdirSync('public/animations',{recursive:true})\"",
+    "remotion:studio": "node ./node_modules/@remotion/cli/remotion-cli.js studio src/remotion/index.tsx",
+    "remotion:compositions": "node ./node_modules/@remotion/cli/remotion-cli.js compositions src/remotion/index.tsx",
+    "remotion:still:hero": "npm run remotion:prepare && node ./node_modules/@remotion/cli/remotion-cli.js still src/remotion/index.tsx HeroAutomationLoop public/animations/hero-automation-poster.png --frame=54 --overwrite",
+    "remotion:still:services": "npm run remotion:prepare && node ./node_modules/@remotion/cli/remotion-cli.js still src/remotion/index.tsx ServicesOrbitLoop public/animations/services-orbit-poster.png --frame=45 --overwrite",
+    "remotion:render:hero": "npm run remotion:prepare && node ./node_modules/@remotion/cli/remotion-cli.js render src/remotion/index.tsx HeroAutomationLoop public/animations/hero-automation.mp4 --codec=h264 --overwrite",
+    "remotion:render:services": "npm run remotion:prepare && node ./node_modules/@remotion/cli/remotion-cli.js render src/remotion/index.tsx ServicesOrbitLoop public/animations/services-orbit.mp4 --codec=h264 --overwrite",
+    "remotion:render": "npm run remotion:still:hero && npm run remotion:still:services && npm run remotion:render:hero && npm run remotion:render:services"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.105.1",
+    "@vercel/analytics": "^1.5.0",
+    "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
+    "googleapis": "^164.1.0",
+    "lucide-react": "^0.468.0",
+    "luxon": "^3.7.2",
+    "next": "16.2.4",
+    "react": "19.2.5",
+    "react-dom": "19.2.5",
+    "tailwind-merge": "^2.6.0",
+    "zod": "4.3.6"
+  },
+  "devDependencies": {
+    "@remotion/cli": "^4.0.455",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/luxon": "^3.7.1",
+    "@types/node": "^20.17.12",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.39.1",
+    "eslint-config-next": "16.2.4",
+    "jsdom": "^25.0.1",
+    "node": "22.22.2",
+    "postcss": "^8.4.49",
+    "remotion": "^4.0.455",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "engines": {
+    "node": ">=20.9.0"
+  }
+}
